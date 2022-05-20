@@ -1,4 +1,8 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import CreateAppointment from './pages/CreateAppoinmentPage';
+
+
 
 function App() {
   return (
