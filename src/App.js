@@ -9,7 +9,6 @@ import AppointmentPage from './pages/AppointmentPage';
 import { useEffect, useState } from "react";
 import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
-import { response } from 'express';
 
 function App() {
 
