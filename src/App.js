@@ -5,9 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import LoginPage from './pages/LoginPage';
 import axios from 'axios';
-import AppointmentPage from '/pages/AppointmentPage';
+import AppointmentPage from './pages/AppointmentPage';
 import { useEffect, useState } from "react";
-import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
 import { response } from 'express';
@@ -52,7 +51,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/' element={LoginPage} />
         <Route path='/appointments'  element={<AppointmentPage callBackApps={getAppointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
-        <Route path='/patients' element={<Patients />}/>
+        <Route path='/patients' />
 
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
