@@ -56,6 +56,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/signup' element={<SignupPage/>}/>
       </Routes>
     </div>
+    
   );
 }
 
