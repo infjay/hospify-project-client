@@ -9,8 +9,8 @@ import AppointmentPage from './pages/AppointmentPage';
 import { useEffect, useState } from "react";
 import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
-import PatientList from './pages/Patients';
 import CreatePatient from './pages/CreatePatients';
+import Patients from './pages/Patients';
 
 function App() {
 
@@ -19,28 +19,36 @@ const [ patients, setPatients ] = useState(null);
 
   useEffect(() => {
     getAppointments();
-  }, []);
-
-  useEffect(() => {
     getPatients();
   }, []);
 
 
   const getAppointments = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/appointments`)
+
+    const storedToken = localStorage.getItem('authToken');
+
+    axios.get(`${process.env.REACT_APP_API_URL}/appointments`,
+    {headers: {Authorization: `Bearer ${storedToken}` } })
       .then( response => {
+        console.log("appointments", response.data)
         setAppointments(response.data);
       })
       .catch( e=> console.log('error getting appointments from API...', e))
   }
 
   const getPatients = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/patients`)
+
+  const storedToken = localStorage.getItem('authToken');
+
+    axios.get(`${process.env.REACT_APP_API_URL}/patients`,
+    {headers: {Authorization: `Bearer ${storedToken}` } })
       .then( response => {
+        console.log("patients", response.data)
         setPatients(response.data)
       })
       .catch( e => console.log('error getting patients from API...', e))
   }
+
 
   return (
     <div className="App">
@@ -52,7 +60,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/' element={LoginPage} />
         <Route path='/appointments'  element={<AppointmentPage appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
-        <Route path='/patients' element={<PatientList patients={patients} />}/>
+        <Route path='/patients' element={<Patients patients={patients} />}/>
         <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
 
         <Route path='/profile' element={<UserProfile />}/>
