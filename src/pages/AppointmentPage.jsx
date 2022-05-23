@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
-
+import './Appointment.css'
 
 function Appointments(props){
 
     const renderAppointments = () => {
         const result = props.appointments.map( (element) => {
             return (
-                <div key={element._id} className="appointment-summary box">
-                    {console.log(element)}
+                <div key={element._id} className="appointment-summary">
                     <p>{element.date}</p>
-                    <p>{element.patient.firstName}</p>
+                    <p>{element.time}</p>
+                    <p>{element.patient.firstName} {element.patient.lastName}</p>
                     <p>{element.doctor.email}</p>
                     <NavLink to="/">More details</NavLink> |&nbsp;
                     <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
