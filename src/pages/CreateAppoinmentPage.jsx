@@ -36,8 +36,8 @@ export default function CreateAppointment (props) {
          {console.log(date)}
         <form onSubmit={handleSubmit}>
             <label>
-                Date
-                <input type="date" name="date" value={date} required={true} onChange={(e) => setDate(e.target.value)} />
+                Date:  &nbsp;
+                <input type="datetime-local" name="date" value={date} required={true} onChange={(e) => setDate(e.target.value)} />
 
             </label>
             <button type="submit">Send</button>
