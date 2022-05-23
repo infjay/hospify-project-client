@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
 import PatientList from './pages/Patients';
+import CreatePatient from './pages/CreatePatients';
 
 function App() {
 
@@ -51,8 +52,10 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/' element={LoginPage} />
         <Route path='/appointments'  element={<AppointmentPage callBackApps={getAppointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
-        {/* <Route path='/patients' element={<Patients callbackPatient={getPatients} />}/>
-        <Route path='/profile' /> */}
+        <Route path='/patients' element={<PatientList callbackPatient={getPatients} />}/>
+        <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
+
+        <Route path='/profile' element={<UserProfile />}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
       </Routes>

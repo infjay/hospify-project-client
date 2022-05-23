@@ -9,9 +9,11 @@ function Navbar(){
 
     return (
         <nav className="Navbar">
-            <NavLink to="/patients/create">New Patient</NavLink> | 
-            <NavLink to="/appointments/create">New Appointment</NavLink> |||
-            <NavLink to="/profile">Profile</NavLink> |||
+            <NavLink to="/patients/"> Patient list</NavLink> | &nbsp;
+            <NavLink to="/patients/create">New Patient</NavLink> |  &nbsp;
+            <NavLink to="/appointments/">Appointments</NavLink> |||  &nbsp;
+            <NavLink to="/appointments/create">New Appointment</NavLink> ||| &nbsp;
+            <NavLink to="/profile">Profile</NavLink> ||| &nbsp;
             
             { isLoggedIn &&
                 <>
