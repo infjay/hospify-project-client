@@ -11,6 +11,9 @@ import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
 import CreatePatient from './pages/CreatePatients';
 import Patients from './pages/Patients';
+import AppDetails from './pages/AppointmentDetails';
+import PatientDetails from './pages/PatientDetails';
+import UpdatePatient from './pages/UpdatePatient';
 
 function App() {
 
@@ -62,6 +65,9 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>
         <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
+        <Route path='/appointment/:appointmentId' element={<AppDetails callbackDetails={appointments} />}/>
+        <Route path='/patient/:patientId' element={ <PatientDetails callbackPatDetails={patients} />} />
+        <Route path='/patients/:patientId/edit' element={ <UpdatePatient callbackUpdatePat={getPatients} />} /> 
 
         <Route path='/profile' element={<UserProfile />}/>
         <Route path='/login' element={<LoginPage/>}/>

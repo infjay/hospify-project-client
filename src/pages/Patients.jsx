@@ -13,7 +13,7 @@ function Patients(props){
                     <p>Birthdate: {element.birthDate}</p>
                     <p>BloodType: {element.bloodType}</p>
                     <p>Description: {element.description}</p>
-                    <NavLink to="/">More details</NavLink> |&nbsp;
+                    <NavLink to={`/patient/${element._id}`}>More details</NavLink> |&nbsp;
                     <NavLink to={`/patients/${element._id}/edit`}>Edit</NavLink>
                 </div>
             )
