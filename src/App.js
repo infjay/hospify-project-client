@@ -9,6 +9,7 @@ import AppointmentPage from './pages/AppointmentPage';
 import { useEffect, useState } from "react";
 import SignupPage from './pages/SignupPage'
 import UserProfile from './pages/UserProfile'
+import PatientList from './pages/Patients';
 
 function App() {
 
@@ -50,13 +51,13 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/' element={LoginPage} />
         <Route path='/appointments'  element={<AppointmentPage callBackApps={getAppointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
-        <Route path='/patients' />
-
+        {/* <Route path='/patients' element={<Patients callbackPatient={getPatients} />}/>
+        <Route path='/profile' /> */}
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
       </Routes>
     </div>
-    
+
   );
 }
 
