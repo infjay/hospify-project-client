@@ -50,7 +50,7 @@ const [ patients, setPatients ] = useState(null);
 
       <Routes>
         <Route path='/' element={LoginPage} />
-        <Route path='/appointments'  element={<AppointmentPage callBackApps={getAppointments}/>}/>
+        <Route path='/appointments'  element={<AppointmentPage appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
         <Route path='/patients' element={<PatientList callbackPatient={getPatients} />}/>
         <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>

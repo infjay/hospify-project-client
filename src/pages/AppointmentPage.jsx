@@ -7,8 +7,10 @@ function Appointments(props){
         const result = props.appointments.map( (element) => {
             return (
                 <div key={element._id} className="appointment-summary box">
+                    {console.log(element)}
                     <p>{element.date}</p>
-                    <p>{element.patient}</p>
+                    <p>{element.patient.firstName}</p>
+                    <p>{element.doctor.email}</p>
                     <NavLink to="/">More details</NavLink> |&nbsp;
                     <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
                 </div>
@@ -28,6 +30,7 @@ function Appointments(props){
                     : renderAppointments()
                 }
              </section>
+
 
         </div>
     );
