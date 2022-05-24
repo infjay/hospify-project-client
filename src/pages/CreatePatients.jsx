@@ -72,7 +72,16 @@ return(
             </label>
             <label>
             Blood Type: &nbsp;
-                <input type='text' name='bloodType' value={bloodType} required={true} onChange={(e) => setBloodType(e.target.value)} />
+                <select name='bloodType'  required={true} onChange={(e) => setBloodType(e.target.value)} >
+                    <option value={bloodType}>0+</option>
+                    <option value={bloodType}>0-</option>
+                    <option value={bloodType}>A+</option>
+                    <option value={bloodType}>A-</option>
+                    <option value={bloodType}>B-</option>
+                    <option value={bloodType}>B+</option>
+                    <option value={bloodType}>AB+</option>
+                    <option value={bloodType}>AB-</option>
+                    </select>
             </label>
             <br /><br />
 
