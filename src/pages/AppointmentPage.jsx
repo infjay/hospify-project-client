@@ -11,7 +11,7 @@ function Appointments(props){
                     <p>{element.time}</p>
                     <p>{element.patient.firstName} {element.patient.lastName}</p>
                     <p>{element.doctor.email}</p>
-                    <NavLink to="/">More details</NavLink> |&nbsp;
+                    <NavLink to={`/appointments/${element._id}`}>More details</NavLink> |&nbsp;
                     <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
                 </div>
             )
