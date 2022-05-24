@@ -10,7 +10,9 @@ const navigate = useNavigate();
 
 const {patientId} = useParams();
 
-const patientDetails = props.patients?.find( patient => patient._id === patientId);
+const patientDetails = props.callbackUpdatePat.find( patient => patient._id === patientId);
+
+//hooks are not working properly
 
 const [firstName, setFirstName ] = useState(patientDetails?.firstName);
 const [lastName, setLastName ] = useState(patientDetails?.lastName);
@@ -41,7 +43,7 @@ const handleSubmit = (e) => {
         .catch( e => console.log("error creating a patient, react route", e));
      }
 
-
+console.log(patientDetails)
 
 
 return(
@@ -57,34 +59,46 @@ return(
                 name="firstName"
                 value={firstName}
                 required={true}
+                placeholder={patientDetails.firstName}
                 onChange={(e) =>setFirstName(e.target.value)} />
 
             </label>
             <label>
                Last Name:  &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" name="lastName" value={lastName} required={true} onChange={(e) => setLastName(e.target.value)} />
+                <input type="text" name="lastName" value={lastName} required={true} placeholder={patientDetails.lastName} onChange={(e) => setLastName(e.target.value)} />
 
             </label>
             <br /><br />
 
             <label>
                 Email: &nbsp;
-                <input type='text' name='email' value={email} required={true} onChange={(e) => setEmail(e.target.value)} />
+                <input type='text' name='email' value={email} required={true} placeholder={patientDetails.email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <br /><br />
 
             <label>
             Birth Date: &nbsp;
-                <input type='date' name='birthDate' value={birthDate} required={true} onChange={(e) => setBirthDate(e.target.value)} />
+                <input type='date' name='birthDate' value={birthDate} required={true} placeholder={patientDetails.birthDate} onChange={(e) => setBirthDate(e.target.value)} />
             </label>
 
             <label>
             Description: &nbsp;
-                <input type='text' name='description' value={description} required={true} onChange={(e) => setDescription(e.target.value)} />
+                <input type='text' name='description' value={description} required={true} placeholder={patientDetails.description} onChange={(e) => setDescription(e.target.value)} />
             </label>
             <label>
             Blood Type: &nbsp;
-                <input type='text' name='bloodType' value={bloodType} required={true} onChange={(e) => setBloodType(e.target.value)} />
+                <select name='bloodType'  required={true}  onChange={(e) => setBloodType(e.target.value)} >
+
+                    <option value={bloodType} selected>{patientDetails.bloodType}</option>
+                    <option value={bloodType}>0+</option>
+                    <option value={bloodType}>0-</option>
+                    <option value={bloodType}>A+</option>
+                    <option value={bloodType}>A-</option>
+                    <option value={bloodType}>B-</option>
+                    <option value={bloodType}>B+</option>
+                    <option value={bloodType}>AB+</option>
+                    <option value={bloodType}>AB-</option>
+                    </select>
             </label>
             <br /><br />
 
