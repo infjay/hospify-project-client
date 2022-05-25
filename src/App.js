@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import axios from 'axios';
-import Appointment from './pages/Appointment';
+import Appointments from './pages/Appointments';
 import { useEffect, useState } from "react";
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
@@ -64,7 +64,7 @@ const [ patients, setPatients ] = useState(null);
 
       <Routes>
         <Route path='/' element={Login} />
-        <Route path='/appointments'  element={<Appointment appointments={appointments}/>}/>
+        <Route path='/appointments'  element={<Appointments appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment getAppointments={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>
         <Route path='/patients/create' element={<CreatePatient getPatients={getPatients} />}/>

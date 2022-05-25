@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 
 
-export default function CreateAppointment (props) {
+ function CreateAppointment (props) {
     const storedToken = localStorage.getItem('authToken');
 
      const [date, setDate] = useState("");
@@ -98,4 +98,6 @@ export default function CreateAppointment (props) {
     </section>
     )
 }
+
+export default CreateAppointment;
 
