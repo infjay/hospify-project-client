@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
-function AppoitmentDetails(props) {
+function AppoitmentDetails() {
   const { appointmentId } = useParams();
 
   const [details, setDetails] = useState(null);

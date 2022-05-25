@@ -71,7 +71,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/appointments/:appointmentId' element={<AppointmentDetails appointments={appointments} />}/>
         <Route path='/patient/:patientId' element={ <PatientDetails patients={patients} />} />
         <Route path='/patients/:patientId/edit' element={ <UpdatePatient patients={patients} updatePatient={getPatients}  />} /> 
-        <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt getAppointments={getAppointments}/> } />
+        <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt appointments={appointments} updateAppointment={getAppointments}/> } />
 
         <Route path='/profile' element={<UserProfile />}/>
         <Route path='/login' element={<Login/>}/>
