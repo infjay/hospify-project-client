@@ -14,8 +14,7 @@ function UpdateAppointment(props) {
   const getDetails = () => {
     const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

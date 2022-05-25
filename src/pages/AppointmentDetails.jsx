@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import  {Button}  from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css' 
 
 function AppoitmentDetails() {
   const { appointmentId } = useParams();
@@ -19,7 +21,6 @@ function AppoitmentDetails() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("appointment details", response.data);
         setDetails(response.data);
       })
       .catch((err) => console.log("error getting details ", err));
@@ -41,7 +42,9 @@ function AppoitmentDetails() {
         <p>
           {details.doctor.firstName} {details.doctor.lastName}
         </p>
-        <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink>
+        <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
+
+      <Button variant="success">Complete</Button>
       </div>
     );
   };
