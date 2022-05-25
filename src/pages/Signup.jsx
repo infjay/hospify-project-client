@@ -43,7 +43,6 @@ function Signup() {
           type="email"
           name="email"
           value={email}
-          required={true}
           onChange={(e) => setEmail(e.target.value)}
         />&nbsp;
 
@@ -52,7 +51,6 @@ function Signup() {
           type="password"
           name="password"
           value={password}
-          required={true}
           onChange={(e) => setPassword(e.target.value)}
         />&nbsp;
         <label>First Name: </label>
@@ -76,7 +74,6 @@ function Signup() {
           type="String"
           name="Specialty"
           value={specialty}
-          required={true}
           onChange={(e) => setSpecialty(e.target.value)}
         />
 
