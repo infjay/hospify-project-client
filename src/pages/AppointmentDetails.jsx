@@ -1,29 +1,41 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
-import  {Button}  from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import { NavLink, useNavigate, useParams} from "react-router-dom";
+//import  {Button}  from "react-bootstrap";
+//import 'bootstrap/dist/css/bootstrap.min.css' 
 
 function AppoitmentDetails() {
   const { appointmentId } = useParams();
-
   const [details, setDetails] = useState(null);
+  const navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
+
 
   useEffect(() => {
     getDetails();
+    deleteAppointment();
   }, []);
 
   const getDetails = () => {
     const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         setDetails(response.data);
       })
       .catch((err) => console.log("error getting details ", err));
+  };
+
+  const deleteAppointment = () => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
+      headers: { Authorization: `Bearer ${storedToken}` }
+    }).then((response) => {
+      console.log("appointment completed", response)
+      navigate("/")
+    })
+    .catch( (e) => console.log("error deleting route on axios", e))
   };
 
   const renderAppointmentDet = () => {
@@ -44,7 +56,7 @@ function AppoitmentDetails() {
         </p>
         <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
 
-      <Button variant="success">Complete</Button>
+      <button onClick={deleteAppointment}>Complete</button>
       </div>
     );
   };

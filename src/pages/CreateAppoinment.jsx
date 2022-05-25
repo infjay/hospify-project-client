@@ -36,9 +36,8 @@ import axios from "axios"
     e.preventDefault();
 
      const newAppointment = {date, time , patient, doctor};
-
-
-    axios.post(process.env.REACT_APP_API_URL + "/appointments",
+        console.log(newAppointment)
+    axios.post(`${process.env.REACT_APP_API_URL}/appointments`,
      newAppointment,
      { headers: { Authorization: `Bearer ${storedToken}`}})
         .then( response => {
