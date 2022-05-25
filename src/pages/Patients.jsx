@@ -23,7 +23,7 @@ function Patients(props){
     }
     
     return (
-        <div className="PatientsPage">
+        <div className="Patients">
 
             <h1>List of Patients</h1>
 

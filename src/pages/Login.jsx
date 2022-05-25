@@ -1,41 +1,52 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
+import {AuthContext} from "../context/auth.context"
 
-function SignupPage(props) {
+function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [specialty, setSpecialty] = useState("");
 
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     const navigate = useNavigate();
 
-    const handleSignupSubmit = (e) => {
-        e.preventDefault();
-        
-        const requestBody = { email, password, specialty};
+    const { storeToken, authenticateUser } = useContext(AuthContext);
 
-        axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+
+        const requestBody = { email, password };
+
+        axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
             .then((response) => {
-                navigate('/login');
+                // login successful
+                
+                const jwt = response.data.authToken;
+                console.log('Login was sucessful. JWT token: ', jwt);
+                
+                storeToken(jwt);
+                authenticateUser();
+
+                navigate('/');
             })
             .catch((error) => {
+                // login failed
                 const errorDescription = error.response.data.message;
-                console.log("error creating account", errorDescription)
+                console.log("error loggin in...", errorDescription)
                 setErrorMessage(errorDescription);
             })
     };
 
-
     return (
-        <div className="SignupPage">
-            <h1>Register</h1>
+        <div className="LoginPage">
+            <h1>Login</h1>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <form onSubmit={handleSignupSubmit}>
+            <form onSubmit={handleLoginSubmit}>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -53,24 +64,16 @@ function SignupPage(props) {
                     required={true}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <label>Specialty:</label>
-                <input
-                    type="String"
-                    name="Specialty"
-                    value={specialty}
-                    required={true}
-                    onChange={(e) => setSpecialty(e.target.value)}
-                />
-                
 
-
-                <button type="submit">Sign Up</button>
+                <button type="submit">Login</button>
             </form>
 
-            <p>Already have account?</p>
-            <Link to={"/login"}> Login</Link>
+
+            <p>Don't have an account yet?</p>
+            <Link to={"/signup"}> Sign Up</Link>
+
         </div>
     )
 }
 
-export default SignupPage;
+export default Login;

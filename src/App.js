@@ -1,13 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import CreateAppointment from './pages/CreateAppoinmentPage';
+import CreateAppointment from './pages/CreateAppoinment';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar'
-import LoginPage from './pages/LoginPage';
+import Login from './pages/Login';
 import axios from 'axios';
-import AppointmentPage from './pages/AppointmentPage';
+import Appointment from './pages/Appointment';
 import { useEffect, useState } from "react";
-import SignupPage from './pages/SignupPage'
+import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
 import CreatePatient from './pages/CreatePatients';
 import Patients from './pages/Patients';
@@ -63,8 +63,8 @@ const [ patients, setPatients ] = useState(null);
       <Navbar/>
 
       <Routes>
-        <Route path='/' element={LoginPage} />
-        <Route path='/appointments'  element={<AppointmentPage appointments={appointments}/>}/>
+        <Route path='/' element={Login} />
+        <Route path='/appointments'  element={<Appointment appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>
         <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
@@ -74,8 +74,8 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt callbackUpdateApp={getAppointments}/> } />
 
         <Route path='/profile' element={<UserProfile />}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/signup' element={<SignupPage/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
       </Routes>
 
 

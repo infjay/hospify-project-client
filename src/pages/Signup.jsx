@@ -1,52 +1,41 @@
-import { useContext, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import {AuthContext} from "../context/auth.context"
 
-function LoginPage(props) {
+function Signup(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [specialty, setSpecialty] = useState("");
 
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     const navigate = useNavigate();
 
-    const { storeToken, authenticateUser } = useContext(AuthContext);
-
-
-    const handleLoginSubmit = (e) => {
+    const handleSignupSubmit = (e) => {
         e.preventDefault();
+        
+        const requestBody = { email, password, specialty};
 
-        const requestBody = { email, password };
-
-        axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
+        axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
             .then((response) => {
-                // login successful
-                
-                const jwt = response.data.authToken;
-                console.log('Login was sucessful. JWT token: ', jwt);
-                
-                storeToken(jwt);
-                authenticateUser();
-
-                navigate('/');
+                navigate('/login');
             })
             .catch((error) => {
-                // login failed
                 const errorDescription = error.response.data.message;
-                console.log("error loggin in...", errorDescription)
+                console.log("error creating account", errorDescription)
                 setErrorMessage(errorDescription);
             })
     };
 
+
     return (
-        <div className="LoginPage">
-            <h1>Login</h1>
+        <div className="Signup">
+            <h1>Register</h1>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleSignupSubmit}>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -64,16 +53,24 @@ function LoginPage(props) {
                     required={true}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <label>Specialty:</label>
+                <input
+                    type="String"
+                    name="Specialty"
+                    value={specialty}
+                    required={true}
+                    onChange={(e) => setSpecialty(e.target.value)}
+                />
+                
 
-                <button type="submit">Login</button>
+
+                <button type="submit">Sign Up</button>
             </form>
 
-
-            <p>Don't have an account yet?</p>
-            <Link to={"/signup"}> Sign Up</Link>
-
+            <p>Already have account?</p>
+            <Link to={"/login"}> Login</Link>
         </div>
     )
 }
 
-export default LoginPage;
+export default Signup;
