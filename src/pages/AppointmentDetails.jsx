@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams} from "react-router-dom";
-//import  {Button}  from "react-bootstrap";
-//import 'bootstrap/dist/css/bootstrap.min.css' 
+import  {Button}  from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css' 
 
 function AppoitmentDetails() {
   const { appointmentId } = useParams();
@@ -56,7 +56,7 @@ function AppoitmentDetails() {
         </p>
         <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
 
-      <button onClick={deleteAppointment}>Complete</button>
+      <Button onClick={deleteAppointment}>Complete</Button>
       </div>
     );
   };

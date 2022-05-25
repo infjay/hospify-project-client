@@ -14,7 +14,7 @@ function Appointments(props) {
           <p>{element.doctor.email}</p>
           <NavLink to={`/appointments/${element._id}`}>
             More details
-          </NavLink>{" "}
+          </NavLink>
           |&nbsp;
           <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
         </div>
