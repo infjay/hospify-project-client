@@ -3,7 +3,7 @@ import "./Appointments.css";
 
 function Appointments(props) {
   const renderAppointments = () => {
-    const result = props.appointments.map((element) => {
+    const result = props?.appointments?.map((element) => {
       return (
         <div key={element._id} className="appointment-summary">
           <p>{element.date}</p>
@@ -11,7 +11,7 @@ function Appointments(props) {
           <p>
             {element.patient.firstName} {element.patient.lastName}
           </p>
-          <p>{element.doctor.email}</p>
+          <p>{element?.doctor?.email}</p>
           <NavLink to={`/appointments/${element._id}`}>
             More details
           </NavLink>{" "}
