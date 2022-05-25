@@ -5,11 +5,11 @@ function Appointments(props) {
   const renderAppointments = () => {
     const result = props?.appointments?.map((element) => {
       return (
-        <div key={element._id} className="appointment-summary">
-          <p>{element.date}</p>
-          <p>{element.time}</p>
+        <div key={element?._id} className="appointment-summary">
+          <p>{element?.date}</p>
+          <p>{element?.time}</p>
           <p>
-            {element.patient.firstName} {element.patient.lastName}
+            {element?.patient?.firstName} {element.patient.lastName}
           </p>
           <p>{element?.doctor?.email}</p>
           <NavLink to={`/appointments/${element._id}`}>
