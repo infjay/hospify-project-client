@@ -17,11 +17,19 @@ import axios from "axios"
         axios.get(`${process.env.REACT_APP_API_URL}/login`,
         {headers: {Authorization: `Bearer ${storedToken}` } })
             .then( result => setAllDoctors(result.data.allDocs))
-            .then( result => setAllPatients(result.data.allPatients))
+            
             .catch(err => console.log('there is an error', err))
         },[])
 
-        console.log(allPatients)
+      useEffect( () => {
+          axios.get(`${process.env.REACT_APP_API_URL}/patients`,
+          {headers: {Authorization: `Bearer ${storedToken}` } })
+          .then( result => setAllPatients(result.data))
+
+          .catch(err => console.log('there is an error', err))
+        },[])
+       
+
      const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -29,16 +37,12 @@ import axios from "axios"
 
      const newAppointment = {date, time , patient, doctor};
 
-     const storedToken = localStorage.getItem('authToken');
-
 
     axios.post(process.env.REACT_APP_API_URL + "/appointments",
      newAppointment,
-     { headers: { Authorization: `Bearer ${storedToken}`} }
-     )
+     { headers: { Authorization: `Bearer ${storedToken}`}})
         .then( response => {
             props.getAppointments();
-
             navigate("/appointments")
         })
         .catch( e => console.log("error creating an appointment, react route", e));
@@ -50,12 +54,13 @@ import axios from "axios"
          )
      })
 
+
      const patientList = allPatients.map( eachPatient => {
          return (
-             <option value={eachPatient._id} > {eachPatient.firstName} {eachPatient.lastName}</option>
+              <option value={eachPatient._id} > {eachPatient.firstName} {eachPatient.lastName}</option>
          )
      })
-     
+   
 
     return(
 

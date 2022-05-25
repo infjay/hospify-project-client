@@ -34,7 +34,6 @@ const [ patients, setPatients ] = useState(null);
     axios.get(`${process.env.REACT_APP_API_URL}/appointments`,
     {headers: {Authorization: `Bearer ${storedToken}` } })
       .then( response => {
-        console.log("appointments", response.data)
         setAppointments(response.data);
       })
       .catch( e=> console.log('error getting appointments from API...', e))
@@ -43,12 +42,10 @@ const [ patients, setPatients ] = useState(null);
   const getPatients = () => {
     const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/patients`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/patients`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("patients", response.data);
         setPatients(response.data);
       })
       .catch((e) => console.log("error getting patients from API...", e));
@@ -67,7 +64,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/appointments'  element={<Appointments appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment getAppointments={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>
-        <Route path='/patients/create' element={<CreatePatient getPatients={getPatients} />}/>
+        <Route path='/patients/create' element={<CreatePatient patients={patients} getPatients={getPatients} />}/>
         <Route path='/appointments/:appointmentId' element={<AppointmentDetails appointments={appointments} />}/>
         <Route path='/patient/:patientId' element={ <PatientDetails patients={patients} />} />
         <Route path='/patients/:patientId/edit' element={ <UpdatePatient patients={patients} updatePatient={getPatients}  />} /> 
