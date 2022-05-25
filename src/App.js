@@ -20,16 +20,21 @@ function App() {
 
 const [ appointments, setAppointments ] = useState(null);
 const [ patients, setPatients ] = useState(null);
+const storedToken = localStorage.getItem('authToken');
+
+console.log('appointments', appointments)
+console.log('patients', patients)
 
   useEffect(() => {
+    console.log('inside use effect')
     getAppointments();
     getPatients();
   }, []);
 
 
   const getAppointments = () => {
-
-    const storedToken = localStorage.getItem('authToken');
+    console.log('inside get apps call')
+    console.log(`${process.env.REACT_APP_API_URL}/appointments`)
 
     axios.get(`${process.env.REACT_APP_API_URL}/appointments`,
     {headers: {Authorization: `Bearer ${storedToken}` } })
@@ -40,7 +45,6 @@ const [ patients, setPatients ] = useState(null);
   }
 
   const getPatients = () => {
-    const storedToken = localStorage.getItem("authToken");
 
     axios.get(`${process.env.REACT_APP_API_URL}/patients`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -60,7 +64,7 @@ const [ patients, setPatients ] = useState(null);
       <Navigationbar/>
 
       <Routes>
-        <Route path='/' element={Login} />
+        <Route path='/' element={<Login/>} />
         <Route path='/appointments'  element={<Appointments appointments={appointments}/>}/>
         <Route path='/appointments/create' element={<CreateAppointment getAppointments={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>

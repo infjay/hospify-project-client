@@ -1,6 +1,13 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Patients(props) {
+
+  console.log(props)
+  // const [ patientList, setPatientList] = useState(null)
+
+  // useEffect( () =>  setPatientList(props.patients),[])
+  
   const renderPatients = () => {
     const result = props.patients.map((element) => {
       return (
