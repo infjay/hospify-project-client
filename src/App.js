@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import CreateAppointment from './pages/CreateAppoinment';
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar'
+import Navigationbar from './components/Navigationbar'
 import Login from './pages/Login';
 import axios from 'axios';
 import Appointments from './pages/Appointments';
@@ -57,7 +57,7 @@ const [ patients, setPatients ] = useState(null);
     <div className="App">
       <h1>Hospify</h1>
 
-      <Navbar/>
+      <Navigationbar/>
 
       <Routes>
         <Route path='/' element={Login} />
