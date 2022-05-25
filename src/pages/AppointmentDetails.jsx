@@ -4,7 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 
 
 
-function AppDetails(props) {
+function AppoitmentDetails(props) {
     const { appointmentId } = useParams()
 
     const [ details , setDetails] = useState(null)
@@ -56,4 +56,4 @@ function AppDetails(props) {
     )
 }
 
-export default AppDetails;
+export default AppoitmentDetails;

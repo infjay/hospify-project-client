@@ -9,7 +9,7 @@ import Appointment from './pages/Appointment';
 import { useEffect, useState } from "react";
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
-import CreatePatient from './pages/CreatePatients';
+import CreatePatient from './pages/CreatePatient';
 import Patients from './pages/Patients';
 import AppointmentDetails from './pages/AppointmentDetails';
 import PatientDetails from './pages/PatientDetails';
