@@ -64,12 +64,8 @@ function App() {
   };
 
   const getPatients = () => {
-<<<<<<< HEAD
+
     axios.get(`${process.env.REACT_APP_API_URL}/patients`, {
-=======
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/patients`, {
->>>>>>> 4e516c2fe8f6e5d9b38b930b88a4238f15009c6b
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -78,33 +74,10 @@ function App() {
       .catch((e) => console.log("error getting patients from API...", e));
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e516c2fe8f6e5d9b38b930b88a4238f15009c6b
   return (
     <div className="App">
       <h1>Hospify</h1>
 
-<<<<<<< HEAD
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route
-          path="/appointments"
-          element={<Appointments appointments={appointments} />}
-        />
-        <Route
-          path="/appointments/create"
-          element={<CreateAppointment getAppointments={getAppointments} />}
-        />
-        <Route path="/patients" element={<Patients patients={patients} />} />
-        <Route
-          path="/patients/create"
-          element={
-            <CreatePatient patients={patients} getPatients={getPatients} />
-=======
       <Navigationbar />
 
       <Routes>
@@ -140,7 +113,6 @@ function App() {
             <IsPrivate>
               <CreatePatient patients={patients} getPatients={getPatients} />
             </IsPrivate>
->>>>>>> 4e516c2fe8f6e5d9b38b930b88a4238f15009c6b
           }
         />
         <Route
@@ -167,9 +139,6 @@ function App() {
           }
         />
 
-<<<<<<< HEAD
-        <Route path="/profile" element={<UserProfile />} />
-=======
         <Route
           path="/profile"
           element={
@@ -178,7 +147,6 @@ function App() {
             </IsPrivate>
           }
         />
->>>>>>> 4e516c2fe8f6e5d9b38b930b88a4238f15009c6b
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
