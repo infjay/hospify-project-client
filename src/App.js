@@ -11,7 +11,7 @@ import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
 import CreatePatient from './pages/CreatePatients';
 import Patients from './pages/Patients';
-import AppDetails from './pages/AppointmentDetails';
+import AppointmentDetails from './pages/AppointmentDetails';
 import PatientDetails from './pages/PatientDetails';
 import UpdatePatient from './pages/UpdatePatient';
 import UpdateAppt from './pages/UpdateAppointment';
@@ -65,13 +65,13 @@ const [ patients, setPatients ] = useState(null);
       <Routes>
         <Route path='/' element={Login} />
         <Route path='/appointments'  element={<Appointment appointments={appointments}/>}/>
-        <Route path='/appointments/create' element={<CreateAppointment callbackNewApp={getAppointments} />} />
+        <Route path='/appointments/create' element={<CreateAppointment getAppointments={getAppointments} />} />
         <Route path='/patients' element={<Patients patients={patients} />}/>
-        <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
-        <Route path='/appointments/:appointmentId' element={<AppDetails callbackDetails={appointments} />}/>
-        <Route path='/patient/:patientId' element={ <PatientDetails callbackPatDetails={patients} />} />
+        <Route path='/patients/create' element={<CreatePatient getPatients={getPatients} />}/>
+        <Route path='/appointments/:appointmentId' element={<AppointmentDetails appointments={appointments} />}/>
+        <Route path='/patient/:patientId' element={ <PatientDetails patients={patients} />} />
         <Route path='/patients/:patientId/edit' element={ <UpdatePatient patients={patients} updatePatient={getPatients}  />} /> 
-        <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt callbackUpdateApp={getAppointments}/> } />
+        <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt getAppointments={getAppointments}/> } />
 
         <Route path='/profile' element={<UserProfile />}/>
         <Route path='/login' element={<Login/>}/>

@@ -20,7 +20,7 @@ function Appointments(props){
     }
     
     return (
-        <div className="AppointmentPage">
+        <div className="Appointment">
 
             <h1>List of Appointments</h1>
 
