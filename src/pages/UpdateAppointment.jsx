@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom"
 import axios from "axios"
 
 
-function UpdateAppt (props) {
+function UpdateAppointment (props) {
 
     const { appointmentId } = useParams()
 
@@ -97,4 +97,4 @@ function UpdateAppt (props) {
     )
 }
 
-export default UpdateAppt;
+export default UpdateAppointment;
