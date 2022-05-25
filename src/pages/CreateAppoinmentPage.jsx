@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import {useNavigate, useParams} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import axios from "axios"
+
 
 export default function CreateAppointment (props) {
     const storedToken = localStorage.getItem('authToken');
@@ -10,17 +11,17 @@ export default function CreateAppointment (props) {
      const [patient, setPatient] = useState("");
      const [doctor, setDoctor] = useState("")
      const [allDoctors , setAllDoctors] = useState([])
-
-     const { appointmentId } = useParams()
+     const [allPatients, setAllPatients] = useState([])
 
      useEffect( () => { 
         axios.get(`${process.env.REACT_APP_API_URL}/login`,
         {headers: {Authorization: `Bearer ${storedToken}` } })
             .then( result => setAllDoctors(result.data.allDocs))
+            .then( result => setAllPatients(result.data.allPatients))
             .catch(err => console.log('there is an error', err))
         },[])
 
-        console.log(allDoctors)
+        console.log(allPatients)
      const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -48,6 +49,12 @@ export default function CreateAppointment (props) {
              <option value={eachDoctor._id} >{eachDoctor.firstName} {eachDoctor.lastName}</option>
          )
      })
+
+     const patientList = allPatients.map( eachPatient => {
+         return (
+             <option value={eachPatient._id} > {eachPatient.firstName} {eachPatient.lastName}</option>
+         )
+     })
      
 
     return(
@@ -70,12 +77,14 @@ export default function CreateAppointment (props) {
 
             <label>
                 patient id: &nbsp;
-                <input type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} />
+                <select type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} >
+                    {patientList}
+                </select>    
             </label>
             <br /><br />
 
             <label>
-            Doctor Id: &nbsp;
+            Doctor: &nbsp;
                 <select type='text' name='doctor' value={doctor} required={true} onChange={(e) => setDoctor(e.target.value)} >
                     {docOptions}
                 </select>
