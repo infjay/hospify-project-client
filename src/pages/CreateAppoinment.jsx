@@ -37,7 +37,7 @@ export default function CreateAppointment (props) {
      { headers: { Authorization: `Bearer ${storedToken}`} }
      )
         .then( response => {
-            props.callbackNewApp();
+            props.getAppointments();
 
             navigate("/appointments")
         })

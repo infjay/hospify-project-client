@@ -27,7 +27,7 @@ const handleSubmit = (e) => {
      { headers: { Authorization: `Bearer ${storedToken}`} }
      )
         .then( response => {
-            props.callbackCreatePat();
+            props.getPatients();
 
             navigate("/patients")
         })

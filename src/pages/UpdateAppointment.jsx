@@ -51,7 +51,7 @@ function UpdateAppt (props) {
     { headers: { Authorization: `Bearer ${storedToken}`} }
     )
        .then( response => {
-           props.callbackUpdateApp();
+           props.getAppointments();
 
            navigate("/appointments")
        })
