@@ -10,7 +10,7 @@ const navigate = useNavigate();
 
 const {patientId} = useParams();
 
-const patientDetails = props.callbackUpdatePat.find( patient => patient._id === patientId);
+const patientDetails = props.patients.find( patient => patient._id === patientId);
 
 //hooks are not working properly
 
@@ -25,18 +25,17 @@ const [description, setDescription ] = useState(patientDetails?.description);
 const handleSubmit = (e) => {
     e.preventDefault();
 
-
     const newPatient = {firstName, lastName, email, birthDate, bloodType, description};
+    const storedToken = localStorage.getItem('authToken');
 
-     const storedToken = localStorage.getItem('authToken');
-
-
-    axios.put(`${process.env.REACT_APP_API_URL}/patients/${patientId}`,
-     newPatient,
-     { headers: { Authorization: `Bearer ${storedToken}`} }
-     )
+    axios.put(
+        `${process.env.REACT_APP_API_URL}/patients/${patientId}`,
+        newPatient,
+        { headers: { Authorization: `Bearer ${storedToken}`} }
+    )
         .then( response => {
-            props.callbackUpdatePat();
+            //to-do: we probably want to update state with the list of patient in <App>
+            props.updatePatient();
 
             navigate("/patients")
         })

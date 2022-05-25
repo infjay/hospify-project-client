@@ -41,17 +41,18 @@ const [ patients, setPatients ] = useState(null);
   }
 
   const getPatients = () => {
+    const storedToken = localStorage.getItem("authToken");
 
-  const storedToken = localStorage.getItem('authToken');
-
-    axios.get(`${process.env.REACT_APP_API_URL}/patients`,
-    {headers: {Authorization: `Bearer ${storedToken}` } })
-      .then( response => {
-        console.log("patients", response.data)
-        setPatients(response.data)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/patients`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .catch( e => console.log('error getting patients from API...', e))
-  }
+      .then((response) => {
+        console.log("patients", response.data);
+        setPatients(response.data);
+      })
+      .catch((e) => console.log("error getting patients from API...", e));
+  };
 
 
 
@@ -69,7 +70,7 @@ const [ patients, setPatients ] = useState(null);
         <Route path='/patients/create' element={<CreatePatient callbackCreatePat={getPatients} />}/>
         <Route path='/appointments/:appointmentId' element={<AppDetails callbackDetails={appointments} />}/>
         <Route path='/patient/:patientId' element={ <PatientDetails callbackPatDetails={patients} />} />
-        <Route path='/patients/:patientId/edit' element={ <UpdatePatient callbackUpdatePat={patients} />} /> 
+        <Route path='/patients/:patientId/edit' element={ <UpdatePatient patients={patients} updatePatient={getPatients}  />} /> 
         <Route path='/appointments/:appointmentId/edit' element={<UpdateAppt callbackUpdateApp={getAppointments}/> } />
 
         <Route path='/profile' element={<UserProfile />}/>
