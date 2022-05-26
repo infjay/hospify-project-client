@@ -95,7 +95,7 @@ function App() {
         />
         <Route
           path="/appointments/:appointmentId"
-          element={<AppointmentDetails appointments={appointments} />}
+          element={<AppointmentDetails appointments={appointments} /> }
         />
    
         <Route
@@ -107,10 +107,12 @@ function App() {
         <Route
           path="/appointments/:appointmentId/edit"
           element={
+            <IsPrivate>
             <UpdateAppt
               appointments={appointments}
               updateAppointment={getAppointments}
             />
+            </IsPrivate>
           }
         />
 
