@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -80,11 +81,11 @@ function Signup() {
           onChange={(e) => setSpecialty(e.target.value)}
         />
 
-        <button type="submit">Sign Up</button>
+    &nbsp;    <Button type="submit">Sign Up</Button>
       </form>
 
       <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <Button href={"/login"}> Login</Button>
     </div>
   );
 }

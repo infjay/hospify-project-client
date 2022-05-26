@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Button } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
@@ -24,7 +24,7 @@ function Login() {
         // login successful
         const jwt = response.data.authToken;
 
-        storeToken(jwt);
+        storeToken(jwt); 
         authenticateUser();
 
         navigate("/profile");
@@ -53,7 +53,7 @@ function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label>Password:</label>
+&nbsp;<label>Password:</label>&nbsp;&nbsp;
         <input
           type="password"
           name="password"
@@ -62,11 +62,11 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Login</button>
+       &nbsp; <Button type="submit">Login</Button>
       </form>
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Button href={"/signup"}> Sign Up</Button>
     </div>
   );
 }
