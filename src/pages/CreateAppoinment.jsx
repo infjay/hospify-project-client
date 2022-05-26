@@ -80,7 +80,7 @@ import axios from "axios"
             <br /><br />
 
             <label>
-                patient id: &nbsp;
+                Patient : &nbsp;
                 <select type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} >
                 <option>Select</option>
                     {patientList}

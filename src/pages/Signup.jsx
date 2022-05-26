@@ -42,6 +42,7 @@ function Signup() {
         <input
           type="email"
           name="email"
+          required={true}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />&nbsp;
@@ -50,6 +51,7 @@ function Signup() {
         <input
           type="password"
           name="password"
+          required={true}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />&nbsp;
