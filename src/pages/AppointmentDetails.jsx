@@ -13,12 +13,10 @@ function AppoitmentDetails() {
 
   useEffect(() => {
     getDetails();
-    deleteAppointment();
   }, []);
 
   const getDetails = () => {
     const storedToken = localStorage.getItem("authToken");
-
     axios.get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
@@ -32,8 +30,9 @@ function AppoitmentDetails() {
     axios.delete(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
       headers: { Authorization: `Bearer ${storedToken}` }
     }).then((response) => {
-      console.log("appointment completed", response)
-      navigate("/")
+      setDetails(response.data)
+      console.log("appointment completed", response);
+       navigate('/appointments')
     })
     .catch( (e) => console.log("error deleting route on axios", e))
   };
