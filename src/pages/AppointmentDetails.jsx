@@ -4,7 +4,7 @@ import { NavLink, useNavigate, useParams} from "react-router-dom";
 import  {Button}  from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css' 
 
-function AppoitmentDetails() {
+function AppoitmentDetails(props) {
   const { appointmentId } = useParams();
   const [details, setDetails] = useState(null);
   const navigate = useNavigate();
@@ -27,14 +27,16 @@ function AppoitmentDetails() {
   };
 
   const deleteAppointment = () => {
-    axios.delete(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
-      headers: { Authorization: `Bearer ${storedToken}` }
-    }).then((response) => {
-      setDetails(response.data)
-      console.log("appointment completed", response);
-       navigate('/appointments')
-    })
-    .catch( (e) => console.log("error deleting route on axios", e))
+    axios
+      .delete(
+        `${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        props.getAppointments();
+        navigate("/appointments");
+      })
+      .catch((e) => console.log("error deleting route on axios", e));
   };
 
   const renderAppointmentDet = () => {

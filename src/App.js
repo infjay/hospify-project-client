@@ -22,7 +22,6 @@ function App() {
   const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
-    console.log("inside use effect");
     getAppointments();
     getPatients();
   }, []);
@@ -95,7 +94,7 @@ function App() {
         />
         <Route
           path="/appointments/:appointmentId"
-          element={<AppointmentDetails appointments={appointments} /> }
+          element={<AppointmentDetails appointments={appointments} getAppointments={getAppointments}/> }
         />
    
         <Route
