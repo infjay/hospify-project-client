@@ -12,7 +12,6 @@ import UserProfile from "./pages/UserProfile";
 import CreatePatient from "./pages/CreatePatient";
 import Patients from "./pages/Patients";
 import AppointmentDetails from "./pages/AppointmentDetails";
-import PatientDetails from "./pages/PatientDetails";
 import UpdatePatient from "./pages/UpdatePatient";
 import UpdateAppt from "./pages/UpdateAppointment";
 import IsPrivate from "./components/IsPrivate";
@@ -98,10 +97,7 @@ function App() {
           path="/appointments/:appointmentId"
           element={<AppointmentDetails appointments={appointments} />}
         />
-        <Route
-          path="/patient/:patientId"
-          element={<PatientDetails patients={patients} />}
-        />
+   
         <Route
           path="/patients/:patientId/edit"
           element={
@@ -122,6 +118,7 @@ function App() {
           path="/profile"
           element={
               <UserProfile />
+
           }
         />
         <Route path="/login" element={<Login />} />
