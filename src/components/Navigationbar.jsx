@@ -24,8 +24,8 @@ function Navigationbar(){
 
             { !isLoggedIn &&
                 <>
-                    <Button to="/signup" className="links">Register</Button> | &nbsp;
-                    <Button to="/login" className="links">Login</Button>
+                    <Button href="/signup" className="links">Register</Button> | &nbsp;
+                    <Button href="/login" className="links">Login</Button>
                 </>
             }
         </Navbar>
