@@ -26,8 +26,7 @@ function CreatePatient(props) {
 
     const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .post(process.env.REACT_APP_API_URL + "/patients", newPatient, {
+    axios.post(process.env.REACT_APP_API_URL + "/patients", newPatient, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
