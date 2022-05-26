@@ -66,13 +66,6 @@ function Signup() {
           />
         </Form.Group>
 
-<<<<<<< HEAD
-    &nbsp;    <Button type="submit">Sign Up</Button>
-      </form>
-
-      <p>Already have account?</p>
-      <Button href={"/login"}> Login</Button>
-=======
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>First Name</Form.Label>
           <Form.Control
@@ -119,7 +112,6 @@ function Signup() {
         Already have account?
         <Link to={"/login"}> Login</Link>
       </p>
->>>>>>> ec8b594ae4fa6c4cc554570134c0999b7cb30cb9
     </div>
   );
 }

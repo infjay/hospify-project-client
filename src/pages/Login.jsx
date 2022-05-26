@@ -1,12 +1,8 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { Button } from "react-bootstrap";
-=======
 import { Form, Button } from "react-bootstrap";
 
->>>>>>> ec8b594ae4fa6c4cc554570134c0999b7cb30cb9
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
