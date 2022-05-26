@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -20,8 +20,10 @@ function Signup() {
 
     const requestBody = { email, password, specialty, firstName, lastName };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody,
-      {headers: {Authorization: `Bearer ${storedToken}` } })
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         navigate("/login");
       })
@@ -34,58 +36,90 @@ function Signup() {
 
   return (
     <div className="Signup">
+      <br />
       <h1>Register</h1>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          required={true}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />&nbsp;
+        <br />
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            required={true}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          required={true}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />&nbsp;
-        <label>First Name: </label>
-        <input
-          type="String"
-          name="firstName"
-          value={firstName}
-          required={true}
-          onChange={(e) => setFirstName(e.target.value)}
-        /> &nbsp;
-        <label>Last Name: </label>
-        <input
-          type="String"
-          name="lastName"
-          value={lastName}
-          required={true}
-          onChange={(e) => setLastName(e.target.value)}
-        />&nbsp; <br />
-        <label>Specialty:</label>
-        <input
-          type="String"
-          name="Specialty"
-          value={specialty}
-          required={true}
-          onChange={(e) => setSpecialty(e.target.value)}
-        />
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            required={true}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
 
+<<<<<<< HEAD
     &nbsp;    <Button type="submit">Sign Up</Button>
       </form>
 
       <p>Already have account?</p>
       <Button href={"/login"}> Login</Button>
+=======
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            required={true}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="last Name"
+            name="lastName"
+            required={true}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Specialty</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Specialty"
+            name="specialty"
+            required={true}
+            value={specialty}
+            onChange={(e) => setSpecialty(e.target.value)}
+          />
+        </Form.Group>
+
+        <br />
+        <Button variant="primary" type="submit">
+          Sign Up
+        </Button>
+      </form>
+      <br />
+      <p>
+        Already have account?
+        <Link to={"/login"}> Login</Link>
+      </p>
+>>>>>>> ec8b594ae4fa6c4cc554570134c0999b7cb30cb9
     </div>
   );
 }

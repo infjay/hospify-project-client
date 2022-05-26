@@ -32,5 +32,4 @@ function Navigationbar(){
     );
 }
 
-
 export default Navigationbar;
