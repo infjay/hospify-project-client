@@ -39,19 +39,19 @@ function AppoitmentDetails() {
 
   const renderAppointmentDet = () => {
     return (
-      <div key={details._id} className="appointment-summary">
+      <div key={details?._id} className="appointment-summary">
         <p>
-          Date: {details.date} &nbsp;&nbsp;|&nbsp;&nbsp;{details.time}
+          Date: {details?.date} &nbsp;&nbsp;|&nbsp;&nbsp;{details?.time}
         </p>
         <p>
-          Name: {details.patient.firstName} {details.patient.lastName}
+          Name: {details?.patient?.firstName} {details?.patient?.lastName}
         </p>
         <p>
-          Birth Date:{details.patient.birthDate} &nbsp; | &nbsp;Blood Type:{" "}
-          {details.patient.bloodType}
+          Birth Date:{details?.patient?.birthDate} &nbsp; | &nbsp;Blood Type:{" "}
+          {details?.patient?.bloodType}
         </p>
         <p>
-          {details.doctor.firstName} {details.doctor.lastName}
+          {details?.doctor?.firstName} {details?.doctor?.lastName}
         </p>
         <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
 

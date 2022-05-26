@@ -123,9 +123,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <IsPrivate>
               <UserProfile />
-            </IsPrivate>
           }
         />
         <Route path="/login" element={<Login />} />
