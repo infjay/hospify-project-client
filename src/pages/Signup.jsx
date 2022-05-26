@@ -74,6 +74,7 @@ function Signup() {
           type="String"
           name="Specialty"
           value={specialty}
+          required={true}
           onChange={(e) => setSpecialty(e.target.value)}
         />
 
