@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 function CreatePatient(props) {
   const [firstName, setFirstName] = useState();
@@ -118,7 +119,7 @@ function CreatePatient(props) {
         <br />
         <br />
 
-        <button type="submit">Create Patient</button>
+        <Button type="submit">Create Patient</Button>
       </form>
     </section>
   );

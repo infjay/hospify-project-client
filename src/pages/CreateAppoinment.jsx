@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import {useNavigate} from "react-router-dom"
 import axios from "axios"
+import { Button } from "react-bootstrap";
 
 
  function CreateAppointment (props) {
@@ -98,7 +99,7 @@ import axios from "axios"
             <br /><br />
 
 
-            <button type="submit">Send</button>
+            <Button type="submit">Send</Button>
         </form>
 
     </section>
