@@ -7,8 +7,7 @@ function UserProfile() {
   const storedToken = localStorage.getItem("authToken");
 
   React.useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/login`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/login`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((result) => setUserInfo(result.data))

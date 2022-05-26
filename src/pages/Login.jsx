@@ -19,18 +19,15 @@ function Login() {
 
     const requestBody = { email, password };
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
       .then((response) => {
         // login successful
-
         const jwt = response.data.authToken;
-        console.log("Login was sucessful. JWT token: ", jwt);
 
         storeToken(jwt);
         authenticateUser();
 
-        navigate("/");
+        navigate("/profile");
       })
       .catch((error) => {
         // login failed

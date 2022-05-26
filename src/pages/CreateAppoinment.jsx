@@ -36,7 +36,7 @@ import axios from "axios"
     e.preventDefault();
 
      const newAppointment = {date, time , patient, doctor};
-        console.log(newAppointment)
+
     axios.post(`${process.env.REACT_APP_API_URL}/appointments`,
      newAppointment,
      { headers: { Authorization: `Bearer ${storedToken}`}})
@@ -82,6 +82,7 @@ import axios from "axios"
             <label>
                 patient id: &nbsp;
                 <select type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} >
+                <option>Select</option>
                     {patientList}
                 </select>    
             </label>
@@ -90,6 +91,7 @@ import axios from "axios"
             <label>
             Doctor: &nbsp;
                 <select type='text' name='doctor' value={doctor} required={true} onChange={(e) => setDoctor(e.target.value)} >
+                <option>Select</option>
                     {docOptions}
                 </select>
             </label>

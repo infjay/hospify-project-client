@@ -33,8 +33,7 @@ function UpdatePatient(props) {
     };
     const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .put(
+    axios.put(
         `${process.env.REACT_APP_API_URL}/patients/${patientId}`,
         newPatient,
         { headers: { Authorization: `Bearer ${storedToken}` } }
