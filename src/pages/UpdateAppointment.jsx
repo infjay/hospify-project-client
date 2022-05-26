@@ -88,7 +88,7 @@ const patientList = allPatients.map( eachPatient => {
 
 
   return (
-    <section>
+    <div>
       <h1>Update appointment</h1>
 
 
@@ -110,6 +110,7 @@ const patientList = allPatients.map( eachPatient => {
             <label>
                 patient id: &nbsp;
                 <select type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} >
+                <option>Select</option>
                     {patientList}
                 </select>    
             </label>
@@ -118,6 +119,7 @@ const patientList = allPatients.map( eachPatient => {
             <label>
             Doctor: &nbsp;
                 <select type='text' name='doctor' value={doctor} required={true} onChange={(e) => setDoctor(e.target.value)} >
+                <option>Select</option>
                     {docOptions}
                 </select>
             </label>
@@ -128,61 +130,8 @@ const patientList = allPatients.map( eachPatient => {
         </form>
 
     </section>
-      {/* <form onSubmit={handleSubmit}>
-        <label>
-          Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            type="date"
-            name="date"
-            value={date}
-            required={true}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </label>
-        <label>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            type="time"
-            name="time"
-            value={time}
-            required={true}
-            onChange={(e) => setTime(e.target.value)}
-          />
-        </label>
-        <br />
-        <br />
-
-        <label>
-          Patient id: &nbsp;
-          <input
-            type="text"
-            name="patient"
-            value={patient}
-            required={true}
-            placeholder={details?.patient?.lastName}
-            onChange={(e) => setPatient(e.target.value)}
-          />
-        </label>
-        <br />
-        <br />
-
-        <label>
-          Doctor Id: &nbsp;
-          <input
-            type="text"
-            name="doctor"
-            value={doctor}
-            required={true}
-            placeholder={details?.doctor?.lastName}
-            onChange={(e) => setDoctor(e.target.value)}
-          />
-        </label>
-        <br />
-        <br />
-
-        <button type="submit">Update</button>
-      </form> */}
-    </section>
+  
+    </div>
   );
 }
 
