@@ -69,7 +69,9 @@ function CreateAppointment(props) {
 
   return (
     <section className="CreateAppointment">
+    <br />
       <h1>Create a new appointment</h1>
+      <br />
       <form onSubmit={handleSubmit}>
         <label>
           Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

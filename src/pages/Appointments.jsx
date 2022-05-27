@@ -30,7 +30,9 @@ function Appointments(props) {
 
   return (
     <div className="Appointment">
+    <br />
       <h1>List of Appointments</h1>
+      <br />
 
       <section>
         {props.appointments === null ? <p>loading...</p> : renderAppointments()}

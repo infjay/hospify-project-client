@@ -16,9 +16,13 @@ function UserProfile() {
   console.log(userInfo.response);
 
   return (
-    <h1>
+   
+   <h1>
+   <br />
       Welcome Dr. {userInfo?.response?.firstName} {userInfo?.response?.lastName}
+  <br />
     </h1>
+  
   );
 }
 

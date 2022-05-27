@@ -89,8 +89,9 @@ function AppoitmentDetails(props) {
 
   return (
     <div>
+    <br />
       <h1>Appointment details</h1>
-
+    <br />
       <section>
         {details === null ? <p>loading...</p> : renderAppointmentDet()}
       </section>

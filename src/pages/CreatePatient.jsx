@@ -40,7 +40,9 @@ function CreatePatient(props) {
 
   return (
     <section className="CreatePatient">
+      <br />
       <h1>Create a new patient</h1>
+      <br />
       <form onSubmit={handleSubmit}>
         <label>
           First Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
