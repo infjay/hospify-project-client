@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 function UpdateAppointment(props) {
   const storedToken = localStorage.getItem('authToken');
@@ -126,7 +127,7 @@ const patientList = allPatients.map( eachPatient => {
             <br /><br />
 
 
-            <button type="submit">Send</button>
+            <Button type="submit">Update</Button>
         </form>
 
     </section>

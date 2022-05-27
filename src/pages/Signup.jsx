@@ -20,8 +20,7 @@ function Signup() {
 
     const requestBody = { email, password, specialty, firstName, lastName };
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody, {
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

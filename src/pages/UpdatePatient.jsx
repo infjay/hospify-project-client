@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 function UpdatePatient(props) {
   const navigate = useNavigate();
-
   const { patientId } = useParams();
-
   const patientDetails = props.patients.find(
     (patient) => patient._id === patientId
   );
 
-  //hooks are not working properly
 
   const [firstName, setFirstName] = useState(patientDetails?.firstName);
   const [lastName, setLastName] = useState(patientDetails?.lastName);
@@ -33,21 +31,18 @@ function UpdatePatient(props) {
     };
     const storedToken = localStorage.getItem("authToken");
 
-    axios.put(
-        `${process.env.REACT_APP_API_URL}/patients/${patientId}`,
+    axios.put(`${process.env.REACT_APP_API_URL}/patients/${patientId}`,
         newPatient,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        //to-do: we probably want to update state with the list of patient in <App>
+  
         props.updatePatient();
 
         navigate("/patients");
       })
       .catch((e) => console.log("error creating a patient, react route", e));
   };
-
-  console.log(patientDetails);
 
   return (
     <section className="CreatePatient">
@@ -121,15 +116,13 @@ function UpdatePatient(props) {
           />
         </label>
         <label>
-          Blood Type: &nbsp;
+        Blood Type: &nbsp;
           <select
             name="bloodType"
             required={true}
+            placeholder={patientDetails.bloodType}
             onChange={(e) => setBloodType(e.target.value)}
           >
-            <option value={bloodType} selected>
-              {patientDetails.bloodType}
-            </option>
             <option value={bloodType}>0+</option>
             <option value={bloodType}>0-</option>
             <option value={bloodType}>A+</option>
@@ -143,7 +136,7 @@ function UpdatePatient(props) {
         <br />
         <br />
 
-        <button type="submit">Update Patient</button>
+        <Button type="submit">Update Patient</Button>
       </form>
     </section>
   );

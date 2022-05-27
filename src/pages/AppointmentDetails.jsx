@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate, useParams} from "react-router-dom";
-import  {Button}  from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css' 
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function AppoitmentDetails(props) {
   const { appointmentId } = useParams();
@@ -10,14 +10,14 @@ function AppoitmentDetails(props) {
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
 
-
   useEffect(() => {
     getDetails();
   }, []);
 
   const getDetails = () => {
     const storedToken = localStorage.getItem("authToken");
-    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/appointments/${appointmentId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -56,8 +56,7 @@ function AppoitmentDetails(props) {
           {details?.doctor?.firstName} {details?.doctor?.lastName}
         </p>
         <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
-
-      <Button onClick={deleteAppointment}>Complete</Button>
+        <Button onClick={deleteAppointment}>Complete</Button>
       </div>
     );
   };

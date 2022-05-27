@@ -20,13 +20,12 @@ function Login() {
 
     const requestBody = { email, password };
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
       .then((response) => {
         // login successful
         const jwt = response.data.authToken;
 
-        storeToken(jwt); 
+        storeToken(jwt);
         authenticateUser();
 
         navigate("/profile");
