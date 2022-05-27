@@ -18,7 +18,7 @@ function Appointments(props) {
        </p>
     </Card.Text>
     <Button href={`/appointments/${element._id}/edit`} variant="primary">Edit</Button> 
-  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <Button href={`/appointments/${element._id}`} variant="primary">More Details</Button>
   </Card.Body>
 </Card>
