@@ -11,8 +11,8 @@ function Patients(props) {
     <CardGroup>
   <Card style={{ width: '18rem' }}>
   <Card.Body>
-    <Card.Title>Patient</Card.Title>
-    <Card.Subtitle className="mb-2 text-muted"><p>First Name: {element.firstName}</p><p>Last Name: {element.lastName}</p></Card.Subtitle>
+    <Card.Title><p> {element.firstName}  {element.lastName}</p></Card.Title>
+   
     <Card.Subtitle className="mb-2 text-muted"><p>Email: {element.email}</p></Card.Subtitle>
     <Card.Subtitle className="mb-2 text-muted"><p>Birthdate: {element.birthDate}</p></Card.Subtitle>
     <Card.Subtitle className="mb-2 text-muted"><p>BloodType: {element.bloodType}</p></Card.Subtitle>
