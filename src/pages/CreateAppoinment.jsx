@@ -13,6 +13,7 @@ function CreateAppointment(props) {
   const [allDoctors, setAllDoctors] = useState([]);
   const [allPatients, setAllPatients] = useState([]);
 
+  
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/login`, {
         headers: { Authorization: `Bearer ${storedToken}` },

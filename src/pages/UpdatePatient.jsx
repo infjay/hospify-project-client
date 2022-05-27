@@ -124,14 +124,14 @@ function UpdatePatient(props) {
             onChange={(e) => setBloodType(e.target.value)}
           >
            
-            <option value={bloodType}>0+</option>
-            <option value={bloodType}>0-</option>
-            <option value={bloodType}>A+</option>
-            <option value={bloodType}>A-</option>
-            <option value={bloodType}>B-</option>
-            <option value={bloodType}>B+</option>
-            <option value={bloodType}>AB+</option>
-            <option value={bloodType}>AB-</option>
+            <option value="0+">0+</option>
+            <option value="0-">0-</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
           </select>
         </label>
         <br />
