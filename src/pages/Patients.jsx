@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, CardGroup} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Appointments.css'
 
 
 function Patients(props) {
   const renderPatients = () => {
     const result = props.patients.map((element) => {
       return (
-
-  <Card style={{ width: '18rem' }} className='cards'>
+    <CardGroup>
+  <Card style={{ width: '18rem' }}>
   <Card.Body>
     <Card.Title>Patient</Card.Title>
     <Card.Subtitle className="mb-2 text-muted"><p>First Name: {element.firstName}</p><p>Last Name: {element.lastName}</p></Card.Subtitle>
@@ -19,11 +20,8 @@ function Patients(props) {
     <NavLink to={`/patients/${element._id}/edit`}>Edit</NavLink>
     </Card.Body>
    </Card>
+   </CardGroup>
         
-<<<<<<< HEAD
-    
-=======
->>>>>>> fbeec960f01c1f43be0ada1cd447d527d827330e
       );
     });
     return result;

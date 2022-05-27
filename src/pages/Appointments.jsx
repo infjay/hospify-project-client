@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Appointments.css";
-import { Card } from "react-bootstrap";
+import { Card, CardGroup } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -10,7 +10,7 @@ function Appointments(props) {
       return (
 
 
-
+        <CardGroup>
         <Card style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title><p>{element?.date}</p> <p>{element?.time}</p></Card.Title>
@@ -22,7 +22,7 @@ function Appointments(props) {
           <NavLink to={`/appointments/${element._id}`}>More details</NavLink> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
           </Card.Body>
          </Card>
-
+        </CardGroup>
 
 
         /* <div key={element?._id} className="appointment-summary">
