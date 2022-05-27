@@ -1,110 +1,135 @@
-import { useEffect, useState } from "react"
-import {useNavigate} from "react-router-dom"
-import axios from "axios"
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { Button } from "react-bootstrap";
 
+function CreateAppointment(props) {
+  const storedToken = localStorage.getItem("authToken");
 
- function CreateAppointment (props) {
-    const storedToken = localStorage.getItem('authToken');
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [patient, setPatient] = useState("");
+  const [doctor, setDoctor] = useState("");
+  const [allDoctors, setAllDoctors] = useState([]);
+  const [allPatients, setAllPatients] = useState([]);
 
-     const [date, setDate] = useState("");
-     const [time, setTime] = useState("");
-     const [patient, setPatient] = useState("");
-     const [doctor, setDoctor] = useState("")
-     const [allDoctors , setAllDoctors] = useState([])
-     const [allPatients, setAllPatients] = useState([])
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/login`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((result) => setAllDoctors(result.data.allDocs))
 
-     useEffect( () => { 
-        axios.get(`${process.env.REACT_APP_API_URL}/login`,
-        {headers: {Authorization: `Bearer ${storedToken}` } })
-            .then( result => setAllDoctors(result.data.allDocs))
-            
-            .catch(err => console.log('there is an error', err))
-        },[])
+      .catch((err) => console.log("there is an error", err));
+  }, []);
 
-      useEffect( () => {
-          axios.get(`${process.env.REACT_APP_API_URL}/patients`,
-          {headers: {Authorization: `Bearer ${storedToken}` } })
-          .then( result => setAllPatients(result.data))
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/patients`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((result) => setAllPatients(result.data))
 
-          .catch(err => console.log('there is an error', err))
-        },[])
-       
+      .catch((err) => console.log("there is an error", err));
+  }, []);
 
-     const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-     const newAppointment = {date, time , patient, doctor};
+    const newAppointment = { date, time, patient, doctor };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/appointments`,
-     newAppointment,
-     { headers: { Authorization: `Bearer ${storedToken}`}})
-        .then( response => {
-            props.getAppointments();
-            navigate("/appointments")
-        })
-        .catch( e => console.log("error creating an appointment, react route", e));
-     }
+    axios.post(`${process.env.REACT_APP_API_URL}/appointments`, newAppointment, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        props.getAppointments();
+        navigate("/appointments");
+      })
+      .catch((e) =>
+        console.log("error creating an appointment, react route", e)
+      );
+  };
 
-     const docOptions = allDoctors.map( eachDoctor => {
-         return ( 
-             <option value={eachDoctor._id} >{eachDoctor.firstName} {eachDoctor.lastName}</option>
-         )
-     })
+  const docOptions = allDoctors.map((eachDoctor) => {
+    return (
+      <option value={eachDoctor._id}>
+        {eachDoctor.firstName} {eachDoctor.lastName}
+      </option>
+    );
+  });
 
+  const patientList = allPatients.map((eachPatient) => {
+    return (
+      <option value={eachPatient._id}>
+        {" "}
+        {eachPatient.firstName} {eachPatient.lastName}
+      </option>
+    );
+  });
 
-     const patientList = allPatients.map( eachPatient => {
-         return (
-              <option value={eachPatient._id} > {eachPatient.firstName} {eachPatient.lastName}</option>
-         )
-     })
-   
-
-    return(
-
+  return (
     <section className="CreateAppointment">
-    
-    <h1>Create a new appointment</h1>
-        <form onSubmit={handleSubmit}>
-            <label>
-                Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="date" name="date" value={date} required={true} onChange={(e) => setDate(e.target.value)} />
+      <h1>Create a new appointment</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input
+            type="date"
+            name="date"
+            value={date}
+            required={true}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </label>
+        <label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input
+            type="time"
+            name="time"
+            value={time}
+            required={true}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </label>
+        <br />
+        <br />
 
-            </label>
-            <label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="time" name="time" value={time} required={true} onChange={(e) => setTime(e.target.value)} />
+        <label>
+          Patient : &nbsp;
+          <select
+            type="text"
+            name="patient"
+            value={patient}
+            required={true}
+            onChange={(e) => setPatient(e.target.value)}
+          >
+            <option>Select</option>
+            {patientList}
+          </select>
+        </label>
+        <br />
+        <br />
 
-            </label>
-            <br /><br />
+        <label>
+          Doctor: &nbsp;
+          <select
+            type="text"
+            name="doctor"
+            value={doctor}
+            required={true}
+            onChange={(e) => setDoctor(e.target.value)}
+          >
+            <option>Select</option>
+            {docOptions}
+          </select>
+        </label>
+        <br />
+        <br />
 
-            <label>
-                Patient : &nbsp;
-                <select type='text' name='patient' value={patient} required={true} onChange={(e) => setPatient(e.target.value)} >
-                <option>Select</option>
-                    {patientList}
-                </select>    
-            </label>
-            <br /><br />
-
-            <label>
-            Doctor: &nbsp;
-                <select type='text' name='doctor' value={doctor} required={true} onChange={(e) => setDoctor(e.target.value)} >
-                <option>Select</option>
-                    {docOptions}
-                </select>
-            </label>
-            <br /><br />
-
-
-            <Button type="submit">Send</Button>
-        </form>
-
+        <Button type="submit">Send</Button>
+      </form>
     </section>
-    )
+  );
 }
 
 export default CreateAppointment;
-

@@ -4,12 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Patients(props) {
-
-  console.log(props)
-  // const [ patientList, setPatientList] = useState(null)
-
-  // useEffect( () =>  setPatientList(props.patients),[])
-  
   const renderPatients = () => {
     const result = props.patients.map((element) => {
       return (
