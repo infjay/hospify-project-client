@@ -72,7 +72,7 @@ function Login() {
 
         <br />
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="px-5">
           Login
         </Button>
       </form>
