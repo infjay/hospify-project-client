@@ -46,8 +46,11 @@ function AppoitmentDetails(props) {
   <Card.Header><p> Date: {details?.date}   {details?.time}</p></Card.Header>
   <Card.Body>
     <Card.Title>       <p>
-          Name: {details?.patient?.firstName} {details.patient.lastName}
+          Name: {details?.patient?.firstName}  
        </p></Card.Title>
+       <p>
+          Name: {details?.patient?.lastName}
+       </p>
     <Card.Text>
   
        <p>
@@ -63,7 +66,7 @@ function AppoitmentDetails(props) {
     </Card.Text>
     <Button href={`/appointments/${details._id}/edit`} variant="primary">Edit</Button> 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+        <Button onClick={deleteAppointment}>Complete</Button>
   </Card.Body>
 </Card>
         
