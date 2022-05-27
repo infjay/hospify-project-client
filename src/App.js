@@ -27,11 +27,8 @@ function App() {
   }, []);
 
   const getAppointments = () => {
-    console.log("inside get apps call");
-    console.log(`${process.env.REACT_APP_API_URL}/appointments`);
 
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/appointments`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/appointments`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

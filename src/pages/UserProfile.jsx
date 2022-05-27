@@ -13,7 +13,6 @@ function UserProfile() {
       .then((result) => setUserInfo(result.data))
       .catch((err) => console.log("there is an error", err));
   }, []);
-  console.log(userInfo.response);
 
   return (
     <h1>

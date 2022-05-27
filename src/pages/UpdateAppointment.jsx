@@ -37,7 +37,6 @@ function UpdateAppointment(props) {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log("appointment details", response.data);
         setDetails(response.data);
       })
       .catch((err) => console.log("error getting details ", err));

@@ -123,6 +123,7 @@ function UpdatePatient(props) {
             placeholder={patientDetails.bloodType}
             onChange={(e) => setBloodType(e.target.value)}
           >
+           
             <option value={bloodType}>0+</option>
             <option value={bloodType}>0-</option>
             <option value={bloodType}>A+</option>
