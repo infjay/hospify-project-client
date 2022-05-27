@@ -89,8 +89,9 @@ const patientList = allPatients.map( eachPatient => {
 
   return (
     <div>
+    <br />
       <h1>Update appointment</h1>
-
+      <br />
 
       <section className="CreateAppointment">
     

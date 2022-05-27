@@ -1,29 +1,28 @@
 import { NavLink } from "react-router-dom";
 import "./Appointments.css";
-import { Card, CardGroup } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Card, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Appointments(props) {
   const renderAppointments = () => {
     const result = props?.appointments?.map((element) => {
-      return (
+      return (  
 
-
-        <CardGroup>
-        <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title><p>{element?.date}</p> <p>{element?.time}</p></Card.Title>
-          <Card.Subtitle className="mb-2 text-muted"><p>
-            {element?.patient?.firstName} {element.patient.lastName}
-          </p></Card.Subtitle>
-          <Card.Subtitle className="mb-2 text-muted"><p>Dr.{element?.doctor?.lastName}</p></Card.Subtitle>
-      
-          <NavLink to={`/appointments/${element._id}`}>More details</NavLink> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
-          </Card.Body>
-         </Card>
-        </CardGroup>
-
+        <Card>
+  <Card.Header><p> Date: {element?.date}   {element?.time}</p></Card.Header>
+  <Card.Body>
+    <Card.Title> <p>Dr.{element?.doctor?.lastName}</p></Card.Title>
+    <Card.Text>
+        <p>
+          Patient: {element?.patient?.firstName} {element.patient.lastName}
+       </p>
+    </Card.Text>
+    <Button href={`/appointments/${element._id}/edit`} variant="primary">Edit</Button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <Button href={`/appointments/${element._id}`} variant="primary">More Details</Button>
+  </Card.Body>
+</Card>
+        
       );
     });
     return result;
@@ -31,7 +30,9 @@ function Appointments(props) {
 
   return (
     <div className="Appointment">
+    <br />
       <h1>List of Appointments</h1>
+      <br />
 
       <section>
         {props.appointments === null ? <p>loading...</p> : renderAppointments()}

@@ -29,8 +29,9 @@ function Patients(props) {
 
   return (
     <div className="Patients">
+    <br />
       <h1>List of Patients</h1>
-
+<br />
       <section>
         {props.patients === null ? <p>loading...</p> : renderPatients()}
       </section>

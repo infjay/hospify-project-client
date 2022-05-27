@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function AppoitmentDetails(props) {
@@ -41,7 +41,34 @@ function AppoitmentDetails(props) {
   const renderAppointmentDet = () => {
     return (
       <div key={details?._id} className="appointment-summary">
+
+<Card>
+  <Card.Header><p> Date: {details?.date}   {details?.time}</p></Card.Header>
+  <Card.Body>
+    <Card.Title>       <p>
+          Name: {details?.patient?.firstName} {details.patient.lastName}
+       </p></Card.Title>
+    <Card.Text>
+  
+       <p>
+          Birth Date : {details?.patient?.birthDate}
+        </p>
         <p>
+        Blood Type :{" "}
+          {details?.patient?.bloodType}
+        </p>
+        <p>
+         Responsible Dr : {details?.doctor?.firstName} {details?.doctor?.lastName}
+        </p>
+    </Card.Text>
+    <Button href={`/appointments/${details._id}/edit`} variant="primary">Edit</Button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  </Card.Body>
+</Card>
+        
+
+        {/* <p>
           Date: {details?.date} &nbsp;&nbsp;|&nbsp;&nbsp;{details?.time}
         </p>
         <p>
@@ -55,15 +82,16 @@ function AppoitmentDetails(props) {
           {details?.doctor?.firstName} {details?.doctor?.lastName}
         </p>
         <NavLink to={`/appointments/${details._id}/edit`}>Edit</NavLink> <br />
-        <Button onClick={deleteAppointment}>Complete</Button>
+        <Button onClick={deleteAppointment}>Complete</Button> */}
       </div>
     );
   };
 
   return (
     <div>
+    <br />
       <h1>Appointment details</h1>
-
+    <br />
       <section>
         {details === null ? <p>loading...</p> : renderAppointmentDet()}
       </section>
