@@ -20,15 +20,6 @@ function Patients(props) {
     </Card.Body>
    </Card>
         
-        // <div key={element._id} className="patients-summary">
-        //   <p>First Name: {element.firstName}</p>
-        //   <p>Last Name: {element.lastName}</p>
-        //   <p>Email: {element.email}</p>
-        //   <p>Birthdate: {element.birthDate}</p>
-        //   <p>BloodType: {element.bloodType}</p>
-        //   <p>Description: {element.description}</p>
-        //   <NavLink to={`/patients/${element._id}/edit`}>Edit</NavLink>
-        // </div>
       );
     });
     return result;
