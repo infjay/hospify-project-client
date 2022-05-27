@@ -20,7 +20,10 @@ function Patients(props) {
     </Card.Body>
    </Card>
         
+<<<<<<< HEAD
     
+=======
+>>>>>>> fbeec960f01c1f43be0ada1cd447d527d827330e
       );
     });
     return result;

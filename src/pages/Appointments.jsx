@@ -1,11 +1,31 @@
 import { NavLink } from "react-router-dom";
 import "./Appointments.css";
+import { Card } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function Appointments(props) {
   const renderAppointments = () => {
     const result = props?.appointments?.map((element) => {
       return (
-        <div key={element?._id} className="appointment-summary">
+
+
+
+        <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title><p>{element?.date}</p> <p>{element?.time}</p></Card.Title>
+          <Card.Subtitle className="mb-2 text-muted"><p>
+            {element?.patient?.firstName} {element.patient.lastName}
+          </p></Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted"><p>Dr.{element?.doctor?.lastName}</p></Card.Subtitle>
+      
+          <NavLink to={`/appointments/${element._id}`}>More details</NavLink> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
+          </Card.Body>
+         </Card>
+
+
+
+        /* <div key={element?._id} className="appointment-summary">
           <p>{element?.date}</p>
           <p>{element?.time}</p>
           <p>
@@ -15,7 +35,7 @@ function Appointments(props) {
           <NavLink to={`/appointments/${element._id}`}>More details</NavLink>
           |&nbsp;
           <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
-        </div>
+        </div> */
       );
     });
     return result;
