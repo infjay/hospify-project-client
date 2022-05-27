@@ -8,9 +8,9 @@ function Patients(props) {
     const result = props.patients.map((element) => {
       return (
 
-  <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '18rem' }} className='cards'>
   <Card.Body>
-    <Card.Title>Patinet</Card.Title>
+    <Card.Title>Patient</Card.Title>
     <Card.Subtitle className="mb-2 text-muted"><p>First Name: {element.firstName}</p><p>Last Name: {element.lastName}</p></Card.Subtitle>
     <Card.Subtitle className="mb-2 text-muted"><p>Email: {element.email}</p></Card.Subtitle>
     <Card.Subtitle className="mb-2 text-muted"><p>Birthdate: {element.birthDate}</p></Card.Subtitle>
@@ -20,15 +20,7 @@ function Patients(props) {
     </Card.Body>
    </Card>
         
-        // <div key={element._id} className="patients-summary">
-        //   <p>First Name: {element.firstName}</p>
-        //   <p>Last Name: {element.lastName}</p>
-        //   <p>Email: {element.email}</p>
-        //   <p>Birthdate: {element.birthDate}</p>
-        //   <p>BloodType: {element.bloodType}</p>
-        //   <p>Description: {element.description}</p>
-        //   <NavLink to={`/patients/${element._id}/edit`}>Edit</NavLink>
-        // </div>
+    
       );
     });
     return result;
