@@ -24,18 +24,6 @@ function Appointments(props) {
          </Card>
         </CardGroup>
 
-
-        /* <div key={element?._id} className="appointment-summary">
-          <p>{element?.date}</p>
-          <p>{element?.time}</p>
-          <p>
-            {element?.patient?.firstName} {element.patient.lastName}
-          </p>
-          <p>{element?.doctor?.email}</p>
-          <NavLink to={`/appointments/${element._id}`}>More details</NavLink>
-          |&nbsp;
-          <NavLink to={`/appointments/${element._id}/edit`}>Edit</NavLink>
-        </div> */
       );
     });
     return result;
