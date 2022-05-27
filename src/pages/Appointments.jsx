@@ -14,7 +14,8 @@ function Appointments(props) {
     <Card.Title> <p>Dr.{element?.doctor?.lastName}</p></Card.Title>
     <Card.Text>
         <p>
-          Patient: {element?.patient?.firstName} {element.patient.lastName}
+          Patient: {element?.patient?.firstName} 
+                   {element?.patient?.lastName}
        </p>
     </Card.Text>
     <Button href={`/appointments/${element._id}/edit`} variant="primary">Edit</Button> 
