@@ -8,7 +8,7 @@ function Navigationbar(){
     const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
 
     return (
-        <Navbar bg="dark" variant="dark" className="Navbar">
+        <Navbar bg="dark" variant="dark" className="Navbar" sticky="top" >
 
             
             { isLoggedIn &&
